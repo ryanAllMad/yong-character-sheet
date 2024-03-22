@@ -1,5 +1,8 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
+import { Peralta } from "next/font/google";
+
+const font = Peralta({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
 
 const primary = {
 	main: '#0291FF',
@@ -14,13 +17,16 @@ const secondary = {
 }
 
 const h1 = {
-	fontSize: '2.15em'
+	fontSize: '2.15em',
+	fontFamily: font.style.fontFamily
 }
 const h2 = {
-	fontSize: '1.98em'
+	fontSize: '1.98em',
+	fontFamily: font.style.fontFamily
 }
 const h3 = {
-	fontSize: '1.75em'
+	fontSize: '1.142em',
+	fontFamily: font.style.fontFamily
 }
 
 export const theme = createTheme({
@@ -31,6 +37,8 @@ export const theme = createTheme({
 	typography: {
 		h1,
 		h2,
-		h3
+		h3,
+		fontSize: 1.65,
+		htmlFontSize: 1.65
 	}
 })

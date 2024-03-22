@@ -3,8 +3,7 @@ import * as React from 'react';
 import { Avatar, Grid, Stack, Paper, Typography } from '@mui/material';
 import data from '../../public/yong.json';
 import { useTheme } from '@mui/material/styles';
-import Heading from './Heading';
-import Abilities from './Abilities';
+
 
 interface Profile {
 	src: string;
@@ -19,6 +18,7 @@ const Profile = (props: Profile) => {
 			<Grid
 				container
 				spacing={4}
+				alignItems="center"
 			>
 				<Grid item>
 					<Avatar
@@ -41,26 +41,7 @@ const Profile = (props: Profile) => {
 					</Typography>
 				</Grid>
 			</Grid>
-			<Grid
-				container
-				spacing={4}
-			>
-				<Grid xs={6} md={8} item>
-					<Stack spacing={1}>
-						<Heading level='h3'>Race:</Heading>
-						<Typography>{data.system.details.race}</Typography>
-						<Heading level='h3'>Alignment</Heading>
-						<Typography>{data.system.details.alignment}</Typography>
-						<Heading level='h3'>Bio</Heading>
-						<Typography>
-							{data.system.details.biography.value}
-						</Typography>
-						<Heading level='h3'>Flaw</Heading>
-						<Typography>{data.system.details.flaw}</Typography>
-					</Stack>
-				</Grid>
-				<Abilities />
-			</Grid>
+
 		</Paper>
 	);
 };

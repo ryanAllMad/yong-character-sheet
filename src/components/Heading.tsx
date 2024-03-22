@@ -5,11 +5,11 @@ import { useTheme } from '@mui/material/styles';
 
 interface Heading {
 	level: string;
-	children: React.ReactNode;
+	headingChildren: React.ReactNode;
 }
 
 const Heading = (props: Heading) => {
-	const { children, level } = props;
+	const { headingChildren, level } = props;
 	const theme = useTheme();
 	const { palette } = theme;
 	
@@ -17,9 +17,9 @@ const Heading = (props: Heading) => {
 		<Typography
 		//@ts-expect-error
 			variant={level}
-			sx={{ color: palette.secondary.dark }}
+			sx={{ color: palette.secondary.dark, display: 'inline' }}
 		>
-			{children}
+			{headingChildren}
 		</Typography>
 	);
 };
