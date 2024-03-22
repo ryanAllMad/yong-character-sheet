@@ -1,10 +1,12 @@
 import * as React from 'react';
+import Link from 'next/link';
 import { Grid } from '@mui/material';
 import MyAppBar from '../../components/MyAppBar';
 import Wrapper from '../../components/Wrapper';
 import Profile from '../../components/Profile';
 import Spells from '../../components/Spells';
 import SpellDetails from '@/components/SpellDetails';
+import Footer from '@/components/Footer';
 import data from '../../../public/yong.json';
 
 export default function Spellbook() {
@@ -14,14 +16,16 @@ export default function Spellbook() {
 	return (
 		<>
 			<header>
-				<MyAppBar />
+				<MyAppBar>
+					<></>
+				</MyAppBar>
 			</header>
-			<main className={`spellbook`}>
+			<main id="content" className={`spellbook`}>
 				<Wrapper>
 					<Profile src='/yong.webp' />
 					<Grid
 						container
-						spacing={4}
+						spacing={0}
 						alignItems='flex-start'
 						className='layout-container'
 						sx={{
@@ -49,6 +53,7 @@ export default function Spellbook() {
 					</Grid>
 				</Wrapper>
 			</main>
+			<Footer />
 		</>
 	);
 }

@@ -18,6 +18,7 @@ const Spells = (props: Spells) => {
 				item
 				xs={12}
 				md={2}
+				spacing={4}
 			>
 					<Avatar
 						sx={{

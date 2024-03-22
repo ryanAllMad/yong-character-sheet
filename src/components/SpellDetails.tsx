@@ -18,18 +18,19 @@ const SpellDetails = (props: SpellDetails) => {
 				item
 				xs={12}
 				md={10}
+				spacing={4}
 				sx={{
 					display: '-webkit-box',
 					WebkitLineClamp: '4',
 					WebkitBoxOrient: 'vertical',
 					overflow: 'hidden',
 					lineHeight: '1.8',
-					paddingBottom: 0,
+					padding: 0,
 					marginBottom: 16,
 				}}
 			>
 				<Heading
-					level='h3'
+					level='h2'
 					headingChildren={name}
 				/>
 				<Typography sx={{ fontSize: '18px' }}>

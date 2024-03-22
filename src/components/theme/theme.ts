@@ -17,15 +17,15 @@ const secondary = {
 }
 
 const h1 = {
-	fontSize: '2.15em',
-	fontFamily: font.style.fontFamily
-}
-const h2 = {
 	fontSize: '1.98em',
 	fontFamily: font.style.fontFamily
 }
+const h2 = {
+	fontSize: '1.144em',
+	fontFamily: font.style.fontFamily
+}
 const h3 = {
-	fontSize: '1.142em',
+	fontSize: '1.03em',
 	fontFamily: font.style.fontFamily
 }
 

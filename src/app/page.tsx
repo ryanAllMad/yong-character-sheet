@@ -4,14 +4,17 @@ import MyAppBar from '../components/MyAppBar';
 import Layout from '../components/Layout';
 import Abilities from '@/components/Abilities';
 import CharacterBuild from '@/components/CharacterBuild';
+import Footer from '@/components/Footer';
 
 export default function Home() {
 	return (
 		<>
 			<header>
-				<MyAppBar />
+				<MyAppBar>
+					<></>
+				</MyAppBar>
 			</header>
-			<main className='home'>
+			<main id="content" className='home'>
 				<Wrapper>
 					<Profile src='/yong.webp' />
 					<Layout
@@ -20,6 +23,7 @@ export default function Home() {
 					/>
 				</Wrapper>
 			</main>
+			<Footer />
 		</>
 	);
 }

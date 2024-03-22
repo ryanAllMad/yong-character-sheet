@@ -1,9 +1,15 @@
 'use client';
 import * as React from 'react';
-import { Avatar, Grid, Stack, Paper, Typography } from '@mui/material';
+import {
+	Avatar,
+	Grid,
+	Stack,
+	Paper,
+	Typography
+} from '@mui/material';
 import data from '../../public/yong.json';
 import { useTheme } from '@mui/material/styles';
-
+import InlineBox from './InlineBox';
 
 interface Profile {
 	src: string;
@@ -18,9 +24,9 @@ const Profile = (props: Profile) => {
 			<Grid
 				container
 				spacing={4}
-				alignItems="center"
+				alignItems='center'
 			>
-				<Grid item>
+				<Grid item xs={12} md={2}>
 					<Avatar
 						src={src}
 						alt='Yong Of Artimal, female paladin'
@@ -31,17 +37,29 @@ const Profile = (props: Profile) => {
 						}}
 					/>
 				</Grid>
-				<Grid item>
-					{' '}
-					<Typography
-						variant='h2'
-						gutterBottom
-					>
-						{data.name}
-					</Typography>
+				<Grid item xs={12} md={10}>
+					<Stack>
+						<Typography
+							variant='h1'
+							gutterBottom
+						>
+							{data.name}
+						</Typography>
+						<InlineBox headingChildren="Weapon Of Choice:">
+							<span lang='gv'>Gae Bolg</span>
+						</InlineBox>
+						<InlineBox headingChildren="Notable Kills:">
+						Dragons: 2<br />
+						Giants: 1
+						</InlineBox>
+						<InlineBox headingChildren="Fun Fact:">
+								She may look like the party leader, but she does
+								whatever the 4 <sup>1/2</sup> foot tall elf
+								wizard tells her to.
+						</InlineBox>
+					</Stack>
 				</Grid>
 			</Grid>
-
 		</Paper>
 	);
 };

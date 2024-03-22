@@ -13,15 +13,15 @@ const Layout = (props: Layout) => {
 		<>
 		<Grid
 		container
-		spacing={4}
+		spacing={0}
 		alignItems="flex-start"
 		className='layout-container'
 		sx={{ backgroundColor: '#ffffff', padding: '2em', width: `100%`, margin: 0}}
 	>
-		<Grid xs={12} md={2} item>
+		<Grid xs={12} md={2} item spacing={4}>
 			{columnOne}
 		</Grid>
-		<Grid xs={12} md={10} item>
+		<Grid xs={12} md={10} item spacing={4}>
 		{columnTwo}
 		</Grid>
 	</Grid>
