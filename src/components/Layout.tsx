@@ -18,10 +18,10 @@ const Layout = (props: Layout) => {
 		className='layout-container'
 		sx={{ backgroundColor: '#ffffff', padding: '2em', width: `100%`, margin: 0}}
 	>
-		<Grid xs={8} md={4} item>
+		<Grid xs={12} md={2} item>
 			{columnOne}
 		</Grid>
-		<Grid xs={8} md={8} item>
+		<Grid xs={12} md={10} item>
 		{columnTwo}
 		</Grid>
 	</Grid>

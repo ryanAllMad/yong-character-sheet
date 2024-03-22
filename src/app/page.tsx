@@ -7,15 +7,19 @@ import CharacterBuild from '@/components/CharacterBuild';
 
 export default function Home() {
 	return (
-		<main className="home">
-			<Wrapper>
+		<>
+			<header>
 				<MyAppBar />
-				<Profile src='/yong.webp' />
-				<Layout
-					columnOne={<Abilities />}
-					columnTwo={<CharacterBuild />}
-				/>
-			</Wrapper>
-		</main>
+			</header>
+			<main className='home'>
+				<Wrapper>
+					<Profile src='/yong.webp' />
+					<Layout
+						columnOne={<Abilities />}
+						columnTwo={<CharacterBuild />}
+					/>
+				</Wrapper>
+			</main>
+		</>
 	);
 }

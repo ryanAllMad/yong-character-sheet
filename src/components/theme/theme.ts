@@ -1,8 +1,8 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { Peralta } from "next/font/google";
+import { Readex_Pro } from "next/font/google";
 
-const font = Peralta({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
+const font = Readex_Pro({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
 
 const primary = {
 	main: '#0291FF',

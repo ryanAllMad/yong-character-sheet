@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Peralta } from "next/font/google";
+import { Readex_Pro } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { ThemeProvider } from '@mui/material/styles'
 import { theme } from '../components/theme/theme'
 import "./globals.css";
 
-const font = Peralta({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
+const font = Readex_Pro({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
 
 export const metadata: Metadata = {
   title: "DnD Character Sheet",

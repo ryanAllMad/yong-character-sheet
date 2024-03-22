@@ -1,30 +1,45 @@
 'use client';
 import * as React from 'react';
-import { Typography, List, ListItem } from '@mui/material';
-import data from '../../public/yong.json';
+import { Typography, Grid } from '@mui/material';
 import Heading from './Heading';
 
-const SpellDetails = () => {
-	const { items } = data;
-	const spells = items.filter((i) => i.type === 'spell');
+//sp.system.description.value
+interface SpellDetails {
+	name: string;
+	description: string;
+}
+
+const SpellDetails = (props: SpellDetails) => {
+	const { name, description } = props;
+
 	return (
 		<>
-			<List>
-				{spells.map((sp) => {
-					return (
-						<ListItem key={sp._id} sx={{ display: '-webkit-box', WebkitLineClamp: '4', WebkitBoxOrient: 'vertical', overflow: 'hidden', lineHeight: '1.8', paddingBottom: 0, marginBottom: 16 }}>
-							<Heading level='h3' headingChildren={sp.name} />
-							<Typography sx={{ fontSize: '18px' }}>
-								<span
-									dangerouslySetInnerHTML={{
-										__html: sp.system.description.value,
-									}}
-								/>
-							</Typography>
-						</ListItem>
-					);
-				})}
-			</List>
+			<Grid
+				item
+				xs={12}
+				md={10}
+				sx={{
+					display: '-webkit-box',
+					WebkitLineClamp: '4',
+					WebkitBoxOrient: 'vertical',
+					overflow: 'hidden',
+					lineHeight: '1.8',
+					paddingBottom: 0,
+					marginBottom: 16,
+				}}
+			>
+				<Heading
+					level='h3'
+					headingChildren={name}
+				/>
+				<Typography sx={{ fontSize: '18px' }}>
+					<span
+						dangerouslySetInnerHTML={{
+							__html: description ,
+						}}
+					/>
+				</Typography>
+			</Grid>
 		</>
 	);
 };
