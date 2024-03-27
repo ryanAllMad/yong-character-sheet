@@ -12,11 +12,12 @@ import { useTheme } from '@mui/material/styles';
 import InlineBox from './InlineBox';
 
 interface Profile {
+	pageHeading: string;
 	src: string;
 }
 
 const Profile = (props: Profile) => {
-	const { src } = props;
+	const { pageHeading, src } = props;
 	const theme = useTheme();
 	const { palette } = theme;
 	return (
@@ -27,6 +28,7 @@ const Profile = (props: Profile) => {
 				alignItems='center'
 			>
 				<Grid item xs={12} md={2}>
+					<Typography variant='h1'>{pageHeading}</Typography>
 					<Avatar
 						src={src}
 						alt='Yong Of Artimal, female paladin'
@@ -40,7 +42,7 @@ const Profile = (props: Profile) => {
 				<Grid item xs={12} md={10}>
 					<Stack>
 						<Typography
-							variant='h1'
+							variant='h2'
 							gutterBottom
 						>
 							{data.name}

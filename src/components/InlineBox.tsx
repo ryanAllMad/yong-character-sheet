@@ -15,7 +15,7 @@ const InlineBox = (props: InlineBox) => {
 	} as React.CSSProperties
 	return (
 		<Box sx={style}>
-			<Heading level="h2" headingChildren={headingChildren} />
+			<Heading level="h3" headingChildren={headingChildren} />
 			<Typography sx={style}>{children}</Typography>
 		</Box>
 	)

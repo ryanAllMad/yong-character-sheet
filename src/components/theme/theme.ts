@@ -1,8 +1,9 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { Readex_Pro } from "next/font/google";
+import { Readex_Pro, Cinzel_Decorative } from "next/font/google";
 
-const font = Readex_Pro({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
+const bodyFont = Readex_Pro({ weight: '400', style: 'normal', subsets: ['latin', 'latin-ext'] });
+const titleFont = Cinzel_Decorative({ weight: '700', style: 'normal', subsets: ['latin'] });
 
 const primary = {
 	main: '#0291FF',
@@ -18,15 +19,15 @@ const secondary = {
 
 const h1 = {
 	fontSize: '1.98em',
-	fontFamily: font.style.fontFamily
+	fontFamily: titleFont.style.fontFamily
 }
 const h2 = {
-	fontSize: '1.144em',
-	fontFamily: font.style.fontFamily
+	fontSize: '1.344em',
+	fontFamily: titleFont.style.fontFamily
 }
 const h3 = {
-	fontSize: '1.03em',
-	fontFamily: font.style.fontFamily
+	fontSize: '1.13em',
+	fontFamily: bodyFont.style.fontFamily
 }
 
 export const theme = createTheme({
@@ -39,6 +40,7 @@ export const theme = createTheme({
 		h2,
 		h3,
 		fontSize: 1.65,
-		htmlFontSize: 1.65
+		htmlFontSize: 1.65,
+		fontFamily: bodyFont.style.fontFamily
 	}
 })

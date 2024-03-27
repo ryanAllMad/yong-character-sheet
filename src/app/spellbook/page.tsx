@@ -22,7 +22,7 @@ export default function Spellbook() {
 			</header>
 			<main id="content" className={`spellbook`}>
 				<Wrapper>
-					<Profile src='/yong.webp' />
+					<Profile src='/yong.webp' pageHeading="Spells" />
 					<Grid
 						container
 						spacing={0}

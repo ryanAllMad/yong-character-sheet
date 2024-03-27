@@ -5,6 +5,9 @@ import { AppBar, Box, List, ListItem, Slide } from '@mui/material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Link from 'next/link';
 import { useTheme } from '@mui/material/styles';
+import { Cinzel_Decorative } from "next/font/google";
+
+const titleFont = Cinzel_Decorative({ weight: '700', style: 'normal', subsets: ['latin'] });
 
 interface MyAppBar {
 	window?: () => Window;
@@ -76,6 +79,7 @@ export default function MyAppBar(props: MyAppBar) {
 										color: `${palette.secondary.dark}`,
 										textDecoration: 'none',
 									}}
+									className={titleFont.className}
 									href='/'
 								>
 									About
@@ -83,6 +87,7 @@ export default function MyAppBar(props: MyAppBar) {
 							</ListItem>
 							<ListItem>
 								<Link
+									className={titleFont.className}
 									style={{
 										color: `${palette.secondary.dark}`,
 										textDecoration: 'none',

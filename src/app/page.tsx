@@ -16,7 +16,7 @@ export default function Home() {
 			</header>
 			<main id="content" className='home'>
 				<Wrapper>
-					<Profile src='/yong.webp' />
+					<Profile src='/yong.webp' pageHeading="About" />
 					<Layout
 						columnOne={<Abilities />}
 						columnTwo={<CharacterBuild />}
