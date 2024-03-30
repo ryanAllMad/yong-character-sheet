@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import Heading from './Heading';
 
 //sp.system.description.value
@@ -11,6 +12,8 @@ interface SpellDetails {
 
 const SpellDetails = (props: SpellDetails) => {
 	const { name, description } = props;
+	const theme = useTheme();
+	const query = useMediaQuery(theme.breakpoints.down('md'))
 
 	return (
 		<>
@@ -26,6 +29,7 @@ const SpellDetails = (props: SpellDetails) => {
 					overflow: 'hidden',
 					lineHeight: '1.8',
 					padding: 0,
+					paddingTop: query ? '2em' : '0',
 					marginBottom: 16,
 				}}
 			>

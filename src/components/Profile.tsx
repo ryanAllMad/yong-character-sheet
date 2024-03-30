@@ -5,7 +5,8 @@ import {
 	Grid,
 	Stack,
 	Paper,
-	Typography
+	Typography,
+	useMediaQuery
 } from '@mui/material';
 import data from '../../public/yong.json';
 import { useTheme } from '@mui/material/styles';
@@ -19,13 +20,14 @@ interface Profile {
 const Profile = (props: Profile) => {
 	const { pageHeading, src } = props;
 	const theme = useTheme();
+	const query = useMediaQuery(theme.breakpoints.down('md'))
 	const { palette } = theme;
 	return (
 		<Paper sx={{ padding: `2em` }}>
 			<Grid
 				container
-				spacing={4}
-				alignItems='center'
+				spacing={0}
+				alignItems='flex-start'
 			>
 				<Grid item xs={12} md={2}>
 					<Typography variant='h1'>{pageHeading}</Typography>
@@ -44,6 +46,7 @@ const Profile = (props: Profile) => {
 						<Typography
 							variant='h2'
 							gutterBottom
+							sx={query ? ({paddingTop: '2em'}) : ({paddingTop: 0})}
 						>
 							{data.name}
 						</Typography>
