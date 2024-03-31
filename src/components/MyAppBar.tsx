@@ -1,13 +1,26 @@
 'use client';
 import * as React from 'react';
-import Image from 'next/image';
-import { AppBar, Box, List, ListItem, Slide } from '@mui/material';
+import {
+	AppBar,
+	Avatar,
+	Box,
+	List,
+	ListItem,
+	Slide,
+	Stack,
+	Typography,
+} from '@mui/material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Link from 'next/link';
+const confetti = require('canvas-confetti');
 import { useTheme } from '@mui/material/styles';
-import { Cinzel_Decorative } from "next/font/google";
+import { Cinzel_Decorative } from 'next/font/google';
 
-const titleFont = Cinzel_Decorative({ weight: '700', style: 'normal', subsets: ['latin'] });
+const titleFont = Cinzel_Decorative({
+	weight: '700',
+	style: 'normal',
+	subsets: ['latin'],
+});
 
 interface MyAppBar {
 	window?: () => Window;
@@ -32,7 +45,32 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 
 export default function MyAppBar(props: MyAppBar) {
 	const theme = useTheme();
+	const [animationClass, setAnimationClass] = React.useState('');
+	const [roll, setRoll] = React.useState('?');
+	const [critical, setCritical] = React.useState('rgb(59, 58, 58)');
 	const { palette } = theme;
+	const handleClick = () => {
+		const rollResult = Math.floor(Math.random() * 20) + 1;
+		setAnimationClass((prev) => (!prev ? 'roll' : ''));
+		setRoll(`${rollResult}`);
+		if (rollResult === 20) {
+			setCritical('rgb(9, 72, 9)');
+		}
+		if (rollResult === 1) {
+			setCritical('rgb(145, 8, 8)');
+		}
+	};
+	const reset = () => {
+		setAnimationClass('');
+		setCritical('rgb(59, 58, 58)');
+		setRoll('?');
+	};
+	React.useEffect(() => {
+		if (roll === '20') {
+			confetti.default();
+		}
+	}, [roll]);
+
 	return (
 		<>
 			<ShrinkOnscroll {...props}>
@@ -51,20 +89,58 @@ export default function MyAppBar(props: MyAppBar) {
 						<div className='screen-reader-text'>
 							<Link href='#content'>Skip to content</Link>
 						</div>
-						<Link
-							href='/'
-							style={{
-								textDecoration: 'none',
-								padding: '1.5rem',
-							}}
+						<Stack
+							alignItems='center'
+							spacing={2}
 						>
-							<Image
-								loading='eager'
-								src='/dnd.jpg'
-								alt='to about'
-								width={50}
-							/>
-						</Link>
+							<div className='dice-cup'>
+								<div className='dice-inner'>
+									<div
+										className={`dice ${animationClass}`}
+										onClick={handleClick}
+									>
+										<Avatar
+											src='/20die.jpg'
+											alt='roll 20 sided die'
+											sx={{
+												width: 40,
+												height: 40,
+												border: `2px outset ${palette.primary.main}`,
+											}}
+										/>
+									</div>
+									<div
+										className='dice-back'
+										onClick={reset}
+									>
+										<Avatar
+											sx={{
+												width: 40,
+												height: 40,
+												bgcolor: critical,
+											}}
+										>
+											<Typography variant='h2'>
+												{roll}
+												<span
+													aria-live='polite'
+													className='screen-reader-text'
+												>
+													{roll === '20' &&
+														'critical hit!'}
+													{/* @ts-ignore */}
+													{roll === '1' &&
+														'critical miss!'}
+												</span>
+											</Typography>
+										</Avatar>
+									</div>
+								</div>
+							</div>
+							<Typography variant='caption' sx={{ width: 84 }}>
+								{roll === '20' ? 'Nice!' : 'feeling luky?'}
+							</Typography>
+						</Stack>
 						<List
 							sx={{
 								display: 'flex',

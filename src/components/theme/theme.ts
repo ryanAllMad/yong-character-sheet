@@ -22,11 +22,11 @@ const h1 = {
 	fontFamily: titleFont.style.fontFamily
 }
 const h2 = {
-	fontSize: '1.344em',
+	fontSize: '1.544em',
 	fontFamily: titleFont.style.fontFamily
 }
 const h3 = {
-	fontSize: '1.13em',
+	fontSize: '1.33em',
 	fontFamily: bodyFont.style.fontFamily
 }
 
