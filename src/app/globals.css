@@ -22,8 +22,8 @@ main {
 
 .dice-cup {
 	perspective: 1000px;
-	width: 40px;
-	height: 40px;
+	width: 55px;
+	height: 55px;
 }
 .dice-inner {
 	position: relative;

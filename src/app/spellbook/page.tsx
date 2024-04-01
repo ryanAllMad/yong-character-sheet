@@ -1,13 +1,19 @@
 import * as React from 'react';
-import Link from 'next/link';
+import { MyHead } from '@/components/MyHead';
 import { Grid } from '@mui/material';
 import MyAppBar from '../../components/MyAppBar';
 import Wrapper from '../../components/Wrapper';
+import type { Metadata } from "next";
 import Profile from '../../components/Profile';
 import Spells from '../../components/Spells';
 import SpellDetails from '@/components/SpellDetails';
 import Footer from '@/components/Footer';
 import data from '../../../public/yong.json';
+
+export const metadata: Metadata = {
+	title: "Yong of Artimel: spells",
+	description: "Created with Love, Ryan Duer",
+};
 
 export default function Spellbook() {
 	const { items } = data;
@@ -15,6 +21,9 @@ export default function Spellbook() {
 
 	return (
 		<>
+		<html lang="en">
+			<MyHead title='spellbook' />
+			<body>
 			<header>
 				<MyAppBar>
 					<></>
@@ -54,6 +63,8 @@ export default function Spellbook() {
 				</Wrapper>
 			</main>
 			<Footer />
+			</body>
+		</html>
 		</>
 	);
 }

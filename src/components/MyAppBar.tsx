@@ -48,10 +48,12 @@ export default function MyAppBar(props: MyAppBar) {
 	const [animationClass, setAnimationClass] = React.useState('');
 	const [roll, setRoll] = React.useState('?');
 	const [critical, setCritical] = React.useState('rgb(59, 58, 58)');
+	const [screenInstruct, setScreenInstruct] = React.useState('enter to roll dice')
 	const { palette } = theme;
 	const handleClick = () => {
 		const rollResult = Math.floor(Math.random() * 20) + 1;
 		setAnimationClass((prev) => (!prev ? 'roll' : ''));
+		setScreenInstruct('you rolled: ')
 		setRoll(`${rollResult}`);
 		if (rollResult === 20) {
 			setCritical('rgb(9, 72, 9)');
@@ -64,6 +66,7 @@ export default function MyAppBar(props: MyAppBar) {
 		setAnimationClass('');
 		setCritical('rgb(59, 58, 58)');
 		setRoll('?');
+		setScreenInstruct('enter to roll dice')
 	};
 	React.useEffect(() => {
 		if (roll === '20') {
@@ -93,7 +96,7 @@ export default function MyAppBar(props: MyAppBar) {
 							alignItems='center'
 							spacing={2}
 						>
-							<div className='dice-cup'>
+							<div className='dice-cup' tabIndex={0} role="button">
 								<div className='dice-inner'>
 									<div
 										className={`dice ${animationClass}`}
@@ -103,29 +106,30 @@ export default function MyAppBar(props: MyAppBar) {
 											src='/20die.jpg'
 											alt='roll 20 sided die'
 											sx={{
-												width: 40,
-												height: 40,
+												width: 55,
+												height: 55,
 												border: `2px outset ${palette.primary.main}`,
 											}}
 										/>
 									</div>
 									<div
 										className='dice-back'
+										aria-live='polite'
 										onClick={reset}
 									>
 										<Avatar
 											sx={{
-												width: 40,
-												height: 40,
+												width: 55,
+												height: 55,
 												bgcolor: critical,
 											}}
 										>
 											<Typography variant='h2'>
+												<span className='screen-reader-text'>
+													{screenInstruct}
+												</span>
 												{roll}
-												<span
-													aria-live='polite'
-													className='screen-reader-text'
-												>
+												<span className='screen-reader-text'>
 													{roll === '20' &&
 														'critical hit!'}
 													{/* @ts-ignore */}
@@ -137,7 +141,10 @@ export default function MyAppBar(props: MyAppBar) {
 									</div>
 								</div>
 							</div>
-							<Typography variant='caption' sx={{ width: 84 }}>
+							<Typography
+								variant='caption'
+								sx={{ width: 84 }}
+							>
 								{roll === '20' ? 'Nice!' : 'feeling luky?'}
 							</Typography>
 						</Stack>
