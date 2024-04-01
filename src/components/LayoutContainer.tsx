@@ -16,6 +16,7 @@ const LayoutContainer = (props: LayoutContainerProps) => {
 				container
 				spacing={0}
 				alignItems='flex-start'
+				justifyContent='space-between'
 				className='layout-container'
 				sx={{
 					backgroundColor: theme.palette.info.dark,

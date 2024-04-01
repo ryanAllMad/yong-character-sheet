@@ -18,10 +18,10 @@ const Spells = (props: Spells) => {
 			<Grid
 				item
 				xs={12}
-				md={2}
+				md={3}
 				spacing={4}
-				sx={{display: query ? 'flex' : 'block'}}
-				justifyContent={query ? 'center' : 'unset'}
+				sx={{display: 'flex'}}
+				justifyContent={query ? 'center' : 'flex-end'}
 			>
 					<Avatar
 						sx={{

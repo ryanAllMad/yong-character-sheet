@@ -19,7 +19,7 @@ const SpellDetails = (props: SpellDetails) => {
 			<Grid
 				item
 				xs={12}
-				md={10}
+				md={8}
 				spacing={4}
 				sx={{
 					display: '-webkit-box',

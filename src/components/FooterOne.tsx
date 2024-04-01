@@ -8,7 +8,13 @@ const FooterOne = () => {
 	const theme = useTheme();
 	return (
 		<>
-			<InlineBox headingChildren='Made By:'>
+			<InlineBox
+				direction="column"
+				align='flex-start'
+				display='flex'
+				justify='flex-start'
+				headingChildren='Made By:'
+			>
 				Ryan Duer,
 				<br />
 				<Link

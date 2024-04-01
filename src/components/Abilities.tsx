@@ -5,30 +5,67 @@ import InlineBox from './InlineBox';
 
 const Abilities = () => {
 	const { str, dex, con, int, wis, cha } = data.system.abilities;
-
 	return (
 		<>
 			{str && (
-				<InlineBox headingChildren='Strength'>{str.value}</InlineBox>
+				<InlineBox
+					align='flex-end'
+					display='inline-flex'
+					headingChildren='Strength'
+					justify='space-between'
+				>
+					<span className='round'>{str.value}</span>
+				</InlineBox>
 			)}
 			{dex && (
-				<InlineBox headingChildren='Dexterity'>{dex.value}</InlineBox>
+				<InlineBox
+					align='flex-end'
+					display='inline-flex'
+					headingChildren='Dexterity'
+					justify='space-between'
+				>
+					<span className='round'>{dex.value}</span>
+				</InlineBox>
 			)}
 			{con && (
-				<InlineBox headingChildren='Constitution'>
-					{con.value}
+				<InlineBox
+					align='flex-end'
+					display='inline-flex'
+					headingChildren='Constitution'
+					justify='space-between'
+				>
+					<span className='round'>{con.value}</span>
 				</InlineBox>
 			)}
 			{int && (
-				<InlineBox headingChildren='Intelligence'>
-					{int.value}
+				<InlineBox
+					align='flex-end'
+					display='inline-flex'
+					headingChildren='Intelligence'
+					justify='space-between'
+				>
+					<span className='round'>{int.value}</span>
 				</InlineBox>
 			)}
 			{wis && (
-				<InlineBox headingChildren='Strength'>{str.value}</InlineBox>
+				<InlineBox
+					align='flex-end'
+					display='inline-flex'
+					headingChildren='Strength'
+					justify='space-between'
+				>
+					<span className='round'>{str.value}</span>
+				</InlineBox>
 			)}
 			{cha && (
-				<InlineBox headingChildren='Charisma'>{cha.value}</InlineBox>
+				<InlineBox
+					align='flex-end'
+					display='inline-flex'
+					headingChildren='Charisma'
+					justify='space-between'
+				>
+					<span className='round'>{cha.value}</span>
+				</InlineBox>
 			)}
 		</>
 	);

@@ -8,25 +8,66 @@ const CharacterBuild = () => {
 	return (
 		<>
 			<Stack spacing={1}>
-				<InlineBox headingChildren="Class: ">
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='Class: '
+				>
+					{' '}
 					Paladin
 				</InlineBox>
-				<InlineBox headingChildren='Race: '>
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='Race: '
+				>
+					{' '}
 					{data.system.details.race}
 				</InlineBox>
-				<InlineBox headingChildren='Alignment: '>
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='Alignment: '
+				>
+					{' '}
 					{data.system.details.alignment}
 				</InlineBox>
-				<InlineBox headingChildren='Hit Points: '>
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='Hit Points: '
+				>
+					{' '}
 					{`${data.system.attributes.hp.value}`}
 				</InlineBox>
-				<InlineBox headingChildren='XP: '>
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='XP: '
+				>
 					{`${data.system.details.xp.value}`}
 				</InlineBox>
-				<InlineBox headingChildren='Bio: '>
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='Bio: '
+				>
+					{' '}
 					{data.system.details.biography.value}
 				</InlineBox>
-				<InlineBox headingChildren='Flaw: '>
+				<InlineBox
+					align='flex-end'
+					display='flex'
+					justify='flex-start'
+					headingChildren='Flaw: '
+				>
+					{' '}
 					{data.system.details.flaw}
 				</InlineBox>
 			</Stack>

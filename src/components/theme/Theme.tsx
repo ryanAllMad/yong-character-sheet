@@ -45,14 +45,17 @@ export const Theme = (props: ThemeProps) => {
 			const h1 = {
 				fontSize: '1.98em',
 				fontFamily: titleFont.style.fontFamily,
+				letterSpacing: '0.1em'
 			};
 			const h2 = {
 				fontSize: '1.684em',
 				fontFamily: titleFont.style.fontFamily,
+				letterSpacing: '0.1em'
 			};
 			const h3 = {
 				fontSize: '1.33em',
 				fontFamily: titleFont.style.fontFamily,
+				letterSpacing: '0.1em'
 			};
 			return createTheme({
 				palette: {

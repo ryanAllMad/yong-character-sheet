@@ -1,7 +1,6 @@
 'use client';
 import * as React from 'react';
 import { Grid } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import LayoutContainer from './LayoutContainer';
 
 interface Layout {
@@ -11,13 +10,12 @@ interface Layout {
 
 const Layout = (props: Layout) => {
 	const { columnOne, columnTwo } = props;
-	const theme = useTheme();
 	return (
 		<>
 			<LayoutContainer>
 				<Grid
 					xs={12}
-					md={2}
+					md={3}
 					item
 					spacing={4}
 				>
@@ -25,7 +23,7 @@ const Layout = (props: Layout) => {
 				</Grid>
 				<Grid
 					xs={12}
-					md={10}
+					md={8}
 					item
 					spacing={4}
 				>

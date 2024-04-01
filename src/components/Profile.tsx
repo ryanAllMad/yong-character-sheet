@@ -28,8 +28,9 @@ const Profile = (props: Profile) => {
 				container
 				spacing={0}
 				alignItems='flex-start'
+				justifyContent="space-between"
 			>
-				<Grid item xs={12} md={2} sx={{ display: query ? 'flex' : 'block', flexDirection: query ? 'column' : 'unset'}} alignItems={query ? 'center' : 'unset'}>
+				<Grid item xs={12} md={3} sx={{ display: query ? 'flex' : 'block', flexDirection: query ? 'column' : 'unset'}} alignItems={query ? 'center' : 'unset'}>
 					<Typography variant='h1' gutterBottom>{pageHeading}</Typography>
 					<Avatar
 						src={src}
@@ -41,7 +42,7 @@ const Profile = (props: Profile) => {
 						}}
 					/>
 				</Grid>
-				<Grid item xs={12} md={10}>
+				<Grid item xs={12} md={8}>
 					<Stack>
 						<Typography
 							variant='h2'
@@ -50,14 +51,14 @@ const Profile = (props: Profile) => {
 						>
 							{data.name}
 						</Typography>
-						<InlineBox headingChildren="Weapon Of Choice:">
-							<span lang='gv'>Gae Bolg</span>
+						<InlineBox direction={query ? 'column' : 'row'} align={query ? 'flex-start' : 'flex-end'} display='flex' justify='flex-start' headingChildren="Weapon Of Choice:">
+						<span lang='gv'>Gae Bolg</span>
 						</InlineBox>
-						<InlineBox headingChildren="Notable Kills:">
+						<InlineBox align="flex-start" direction="column" display='flex' justify='flex-start' headingChildren="Notable Kills:">
 						Dragons: 2<br />
 						Giants: 1
 						</InlineBox>
-						<InlineBox headingChildren="Fun Fact:">
+						<InlineBox align="flex-start" direction="column" display='flex' justify='flex-start' headingChildren="Fun Fact:">
 								She may look like the party leader, but she does
 								whatever the 4 <sup>1/2</sup> foot tall elf
 								wizard tells her to.
