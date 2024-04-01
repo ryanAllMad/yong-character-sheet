@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import Heading from './Heading';
 
 interface InlineBox {
@@ -10,8 +11,10 @@ interface InlineBox {
 
 const InlineBox = (props: InlineBox) => {
 	const { children, headingChildren } = props
+	const theme = useTheme();
 	const style = {
-		display: 'block'
+		display: 'block',
+		color: theme.palette.info.light,
 	} as React.CSSProperties
 	return (
 		<Box sx={style}>

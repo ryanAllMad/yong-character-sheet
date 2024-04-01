@@ -29,14 +29,14 @@ const Profile = (props: Profile) => {
 				spacing={0}
 				alignItems='flex-start'
 			>
-				<Grid item xs={12} md={2}>
+				<Grid item xs={12} md={2} sx={{ display: query ? 'flex' : 'block', flexDirection: query ? 'column' : 'unset'}} alignItems={query ? 'center' : 'unset'}>
 					<Typography variant='h1' gutterBottom>{pageHeading}</Typography>
 					<Avatar
 						src={src}
 						alt='Yong Of Artimal, female paladin'
 						sx={{
-							width: 100,
-							height: 100,
+							width: query ? 200 : 100,
+							height: query ? 200 : 100,
 							border: `2px solid ${palette.primary.main}`,
 						}}
 					/>

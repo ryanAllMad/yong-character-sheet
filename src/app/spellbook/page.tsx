@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { MyHead } from '@/components/MyHead';
-import { Readex_Pro } from 'next/font/google';
-import { Grid, Link, List, ListItem, Paper, Stack, Fab } from '@mui/material';
+import { Grid, Fab } from '@mui/material';
 import type { Metadata } from 'next';
 import { Navigation } from '@mui/icons-material';
 import MyAppBar from '../../components/MyAppBar';
 import Wrapper from '../../components/Wrapper';
+import LayoutContainer from '@/components/LayoutContainer';
 import Spells from '../../components/Spells';
 import SpellDetails from '@/components/SpellDetails';
 import Heading from '@/components/Heading';
 import Footer from '@/components/Footer';
+import TOC from '@/components/TOC';
 import data from '../../../public/yong.json';
 
 export const metadata: Metadata = {
@@ -17,14 +18,9 @@ export const metadata: Metadata = {
 	description: 'Created with Love, Ryan Duer',
 };
 
-const bodyFont = Readex_Pro({
-	weight: '400',
-	style: 'normal',
-	subsets: ['latin', 'latin-ext'],
-});
-
 export default function Spellbook() {
 	const { items } = data;
+	
 	const cantrips = items.filter(
 		(i) => i.type === 'spell' && i.system.level === 0
 	);
@@ -37,12 +33,7 @@ export default function Spellbook() {
 	const spellsLThree = items.filter(
 		(i) => i.type === 'spell' && i.system.level === 3
 	);
-	const aStyles = {
-		fontSize: '1em',
-		fontFamily: bodyFont.style.fontFamily,
-		color: '#0e3452',
-		textDecoration: `underline #0e3452`
-	} as React.CSSProperties;
+
 
 	return (
 		<>
@@ -59,61 +50,8 @@ export default function Spellbook() {
 						className={`spellbook`}
 					>
 						<Wrapper>
-							<Paper sx={{ padding: `2em` }}>
-								<Stack>
-									<Heading
-										id='top'
-										variant='h2'
-										headingChildren='Table of Contents'
-									/>
-									<List>
-										<ListItem>
-											<Link
-												sx={aStyles}
-												href='/spellbook#cantrips'
-											>
-												Cantrips
-											</Link>
-										</ListItem>
-										<ListItem>
-											<Link
-												sx={aStyles}
-												href='/spellbook#one'
-											>
-												Level One
-											</Link>
-										</ListItem>
-										<ListItem>
-											<Link
-												sx={aStyles}
-												href='/spellbook#two'
-											>
-												Level Two
-											</Link>
-										</ListItem>
-										<ListItem>
-											<Link
-												sx={aStyles}
-												href='/spellbook#three'
-											>
-												Level Three
-											</Link>
-										</ListItem>
-									</List>
-								</Stack>
-							</Paper>
-							<Grid
-								container
-								spacing={0}
-								alignItems='flex-start'
-								className='layout-container'
-								sx={{
-									backgroundColor: '#ffffff',
-									padding: '2em',
-									width: `100%`,
-									margin: 0,
-								}}
-							>
+							<TOC />
+							<LayoutContainer>
 								<Grid
 									item
 									xs={12}
@@ -230,7 +168,7 @@ export default function Spellbook() {
 										/>
 									</React.Fragment>
 								))}
-							</Grid>
+							</LayoutContainer>
 						</Wrapper>
 					</main>
 					<Footer />

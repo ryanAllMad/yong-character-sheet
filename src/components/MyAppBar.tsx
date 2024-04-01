@@ -9,6 +9,7 @@ import {
 	Slide,
 	Stack,
 	Typography,
+	useMediaQuery,
 } from '@mui/material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Link from 'next/link';
@@ -46,11 +47,12 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 
 export default function MyAppBar(props: MyAppBar) {
 	const theme = useTheme();
+	const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 	const [animationClass, setAnimationClass] = React.useState('');
 	const [roll, setRoll] = React.useState('?');
-	const [critical, setCritical] = React.useState('rgb(59, 58, 58)');
 	const [screenInstruct, setScreenInstruct] = React.useState('enter to roll dice')
 	const { palette } = theme;
+	const [critical, setCritical] = React.useState<string | boolean>(false);
 	const handleClick = () => {
 		const rollResult = Math.floor(Math.random() * 20) + 1;
 		setAnimationClass((prev) => (!prev ? 'roll' : ''));
@@ -65,7 +67,7 @@ export default function MyAppBar(props: MyAppBar) {
 	};
 	const reset = () => {
 		setAnimationClass('');
-		setCritical('rgb(59, 58, 58)');
+		setCritical(palette.info.light);
 		setRoll('?');
 		setScreenInstruct('enter to roll dice')
 	};
@@ -82,7 +84,7 @@ export default function MyAppBar(props: MyAppBar) {
 					<AppBar
 						component='nav'
 						sx={{
-							backgroundColor: '#ffffff',
+							backgroundColor: palette.info.dark,
 							color: `${palette.secondary.dark}`,
 							display: 'flex',
 							flexFlow: 'row nowrap',
@@ -119,10 +121,12 @@ export default function MyAppBar(props: MyAppBar) {
 										onClick={reset}
 									>
 										<Avatar
+										// @ts-ignore
 											sx={{
 												width: 55,
 												height: 55,
-												bgcolor: critical,
+												bgcolor: !critical ? `${palette.info.light}` : critical,
+												color: roll === '20' || roll === '1' ? '#fff !important' : `${palette.info.dark}!important`
 											}}
 										>
 											<Typography variant='h2'>

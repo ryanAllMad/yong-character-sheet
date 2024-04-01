@@ -1,31 +1,38 @@
 'use client';
 import * as React from 'react';
 import { Grid } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import LayoutContainer from './LayoutContainer';
 
 interface Layout {
-	columnOne: React.ReactNode
-	columnTwo: React.ReactNode
+	columnOne: React.ReactNode;
+	columnTwo: React.ReactNode;
 }
 
 const Layout = (props: Layout) => {
-	const {columnOne, columnTwo} = props
+	const { columnOne, columnTwo } = props;
+	const theme = useTheme();
 	return (
 		<>
-		<Grid
-		container
-		spacing={0}
-		alignItems="flex-start"
-		className='layout-container'
-		sx={{ backgroundColor: '#ffffff', padding: '2em', width: `100%`, margin: 0}}
-	>
-		<Grid xs={12} md={2} item spacing={4}>
-			{columnOne}
-		</Grid>
-		<Grid xs={12} md={10} item spacing={4}>
-		{columnTwo}
-		</Grid>
-	</Grid>
-	</>
-	)
-}
-export default Layout
+			<LayoutContainer>
+				<Grid
+					xs={12}
+					md={2}
+					item
+					spacing={4}
+				>
+					{columnOne}
+				</Grid>
+				<Grid
+					xs={12}
+					md={10}
+					item
+					spacing={4}
+				>
+					{columnTwo}
+				</Grid>
+			</LayoutContainer>
+		</>
+	);
+};
+export default Layout;

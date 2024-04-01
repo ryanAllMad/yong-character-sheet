@@ -1,14 +1,18 @@
+'use client';
 import Link from 'next/link';
 import { OpenInNew } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
 import InlineBox from './InlineBox';
 
 const FooterOne = () => {
+	const theme = useTheme();
 	return (
 		<>
 			<InlineBox headingChildren='Made By:'>
 				Ryan Duer,
 				<br />
 				<Link
+					style={{ color: theme.palette.secondary.dark }}
 					href='http://allmaddesigns.com'
 					target='_blank'
 				>
@@ -17,6 +21,7 @@ const FooterOne = () => {
 				</Link>
 				<br />
 				<Link
+					style={{ color: theme.palette.secondary.dark }}
 					href='https://github.com/ryanAllMad'
 					target='_blank'
 				>
@@ -25,6 +30,7 @@ const FooterOne = () => {
 				</Link>
 				<br />
 				<Link
+					style={{ color: theme.palette.secondary.dark }}
 					href='https://www.linkedin.com/in/ryan-duer-515342108/'
 					target='_blank'
 				>
