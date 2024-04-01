@@ -37,6 +37,7 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 			appear={false}
 			direction='down'
 			in={!trigger}
+			easing={{enter: 'ease-in', exit: 'ease-out'}}
 		>
 			{children}
 		</Slide>

@@ -4,20 +4,23 @@ import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 interface Heading {
-	level: string;
+	variant: any;
 	headingChildren: React.ReactNode;
+	id?: string;
+	gutterBottom?: boolean
 }
 
 const Heading = (props: Heading) => {
-	const { headingChildren, level } = props;
+	const { headingChildren, variant, id, gutterBottom } = props;
 	const theme = useTheme();
 	const { palette } = theme;
 	
 	return (
 		<Typography
-		//@ts-expect-error
-			variant={level}
-			sx={{ color: palette.secondary.dark, display: 'inline' }}
+			id={id}
+			variant={variant}
+			sx={{ color: palette.secondary.dark}}
+			gutterBottom={gutterBottom}
 		>
 			{headingChildren}
 		</Typography>

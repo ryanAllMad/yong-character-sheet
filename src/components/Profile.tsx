@@ -30,7 +30,7 @@ const Profile = (props: Profile) => {
 				alignItems='flex-start'
 			>
 				<Grid item xs={12} md={2}>
-					<Typography variant='h1'>{pageHeading}</Typography>
+					<Typography variant='h1' gutterBottom>{pageHeading}</Typography>
 					<Avatar
 						src={src}
 						alt='Yong Of Artimal, female paladin'

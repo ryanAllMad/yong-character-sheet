@@ -4,7 +4,6 @@ import { Typography, Grid, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Heading from './Heading';
 
-//sp.system.description.value
 interface SpellDetails {
 	name: string;
 	description: string;
@@ -34,7 +33,7 @@ const SpellDetails = (props: SpellDetails) => {
 				}}
 			>
 				<Heading
-					level='h2'
+					variant='h3'
 					headingChildren={name}
 				/>
 				<Typography sx={{ fontSize: '18px' }}>

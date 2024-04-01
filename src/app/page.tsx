@@ -19,7 +19,7 @@ export default function Home() {
 		<html lang="en">
 			<MyHead title="about" />
 			<body>
-			<header>
+			<header aria-label='app navigation'>
 				<MyAppBar>
 					<></>
 				</MyAppBar>

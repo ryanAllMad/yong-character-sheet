@@ -8,7 +8,7 @@ const titleFont = Cinzel_Decorative({ weight: '700', style: 'normal', subsets: [
 const primary = {
 	main: '#0291FF',
 	light: '#80c8ff',
-	dark: '#194d75',
+	dark: '#0e3452',
 	contrastText: '#0F051C'
 }
 const secondary = {
@@ -19,15 +19,15 @@ const secondary = {
 
 const h1 = {
 	fontSize: '1.98em',
-	fontFamily: titleFont.style.fontFamily
+	fontFamily: titleFont.style.fontFamily,
 }
 const h2 = {
-	fontSize: '1.544em',
-	fontFamily: titleFont.style.fontFamily
+	fontSize: '1.684em',
+	fontFamily: titleFont.style.fontFamily,
 }
 const h3 = {
 	fontSize: '1.33em',
-	fontFamily: bodyFont.style.fontFamily
+	fontFamily: titleFont.style.fontFamily,
 }
 
 export const theme = createTheme({

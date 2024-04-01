@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { Avatar, Grid } from '@mui/material';
+import { Avatar, Grid, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 interface Spells {
@@ -11,6 +11,7 @@ interface Spells {
 const Spells = (props: Spells) => {
 	const { imageSource, name } = props;
 	const theme = useTheme();
+	const query = useMediaQuery(theme.breakpoints.down('md'))
 	const { palette } = theme;
 	return (
 		<>
@@ -19,11 +20,13 @@ const Spells = (props: Spells) => {
 				xs={12}
 				md={2}
 				spacing={4}
+				sx={{display: query ? 'flex' : 'block'}}
+				justifyContent={query ? 'center' : 'unset'}
 			>
 					<Avatar
 						sx={{
-							width: 100,
-							height: 100,
+							width: query ? 200 : 100,
+							height: query ? 200 : 100,
 							bgcolor: `${palette.primary.dark}`,
 							border: `2px solid ${palette.primary.main}`,
 						}}
