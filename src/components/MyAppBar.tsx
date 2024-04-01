@@ -47,7 +47,7 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 
 export default function MyAppBar(props: MyAppBar) {
 	const theme = useTheme();
-	const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
+	const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion)');
 	const [animationClass, setAnimationClass] = React.useState('');
 	const [roll, setRoll] = React.useState('?');
 	const [screenInstruct, setScreenInstruct] = React.useState('enter to roll dice')
@@ -55,7 +55,12 @@ export default function MyAppBar(props: MyAppBar) {
 	const [critical, setCritical] = React.useState<string | boolean>(false);
 	const handleClick = () => {
 		const rollResult = Math.floor(Math.random() * 20) + 1;
-		setAnimationClass((prev) => (!prev ? 'roll' : ''));
+		if(!prefersReducedMotion) {
+			setAnimationClass((prev) => (!prev ? 'roll' : ''));
+		}
+		if(prefersReducedMotion) {
+			setAnimationClass((prev) => (!prev ? 'flip-once' : ''));
+		}
 		setScreenInstruct('you rolled: ')
 		setRoll(`${rollResult}`);
 		if (rollResult === 20) {
@@ -72,10 +77,10 @@ export default function MyAppBar(props: MyAppBar) {
 		setScreenInstruct('enter to roll dice')
 	};
 	React.useEffect(() => {
-		if (roll === '20') {
+		if (roll === '20' && !prefersReducedMotion) {
 			confetti.default();
 		}
-	}, [roll]);
+	}, [prefersReducedMotion, roll]);
 
 	return (
 		<>
@@ -100,7 +105,7 @@ export default function MyAppBar(props: MyAppBar) {
 							spacing={2}
 						>
 							<div className='dice-cup' tabIndex={0} role="button">
-								<div className='dice-inner'>
+								<div className='dice-inner' style={{transition: prefersReducedMotion ? 'none' : 'transform 0.6s'}}>
 									<div
 										className={`dice ${animationClass}`}
 										onClick={handleClick}

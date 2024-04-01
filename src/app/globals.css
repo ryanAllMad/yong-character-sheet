@@ -30,13 +30,16 @@ main {
 	width: 100%;
 	height: 100%;
 	text-align: center;
-	transition: transform 0.6s;
 	transform-style: preserve-3d;
 	border-radius: 50%;
 	box-shadow: 7px 4px 8px #444;
 }
 .dice-cup .dice-inner:has(> .dice.roll) {
 	transform: rotateY(540deg);
+	box-shadow: 2px 4px 8px #444;
+}
+.dice-cup .dice-inner:has(> .dice.flip-once) {
+	transform: rotateY(180deg);
 	box-shadow: 2px 4px 8px #444;
 }
 .dice,
@@ -50,5 +53,5 @@ main {
 	cursor: pointer;
 }
 .dice-cup .dice-back {
-	transform: rotateY(540deg);
+	transform: rotateY(180deg);
 }
