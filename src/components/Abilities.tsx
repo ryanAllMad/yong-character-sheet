@@ -51,10 +51,10 @@ const Abilities = () => {
 				<InlineBox
 					align='flex-end'
 					display='inline-flex'
-					headingChildren='Strength'
+					headingChildren='Wisdom'
 					justify='space-between'
 				>
-					<span className='round'>{str.value}</span>
+					<span className='round'>{wis.value}</span>
 				</InlineBox>
 			)}
 			{cha && (
