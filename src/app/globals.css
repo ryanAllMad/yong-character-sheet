@@ -4,6 +4,16 @@ body {
 main {
 	margin-top: 140px;
 }
+.mui-13ffdrg a,
+.mui-4e6yb8 a {
+	color: #b5b0f1;
+}
+.mui-13ffdrg a:hover,
+.mui-13ffdrg a:visited,
+.mui-4e6yb8 a:hover,
+.mui-4e6yb8 a:visited {
+	color: #867cf2;
+}
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	border: 0;
