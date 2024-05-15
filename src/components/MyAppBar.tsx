@@ -69,6 +69,9 @@ export default function MyAppBar(props: MyAppBar) {
 		if (rollResult === 1) {
 			setCritical('rgb(145, 8, 8)');
 		}
+		if(rollResult !== 1 && rollResult !== 20) {
+			setCritical(`${palette.info.light}`)
+		}
 	};
 	const reset = () => {
 		setAnimationClass('');
@@ -76,6 +79,12 @@ export default function MyAppBar(props: MyAppBar) {
 		setRoll('?');
 		setScreenInstruct('enter to roll dice')
 	};
+	const handleKeyDown = (e: React.KeyboardEvent) => {
+		e.preventDefault()
+		if (e.code === 'Enter' || e.code === 'Space') {
+			handleClick()
+		}
+	}
 	React.useEffect(() => {
 		if (roll === '20' && !prefersReducedMotion) {
 			confetti.default();
@@ -104,11 +113,14 @@ export default function MyAppBar(props: MyAppBar) {
 							alignItems='center'
 							spacing={2}
 						>
-							<div className='dice-cup' tabIndex={0} role="button">
+							<div className='dice-cup'>
 								<div className='dice-inner' style={{transition: prefersReducedMotion ? 'none' : 'transform 0.6s'}}>
 									<div
+										tabIndex={0} 
+										role="button"
 										className={`dice ${animationClass}`}
 										onClick={handleClick}
+										onKeyDown={(e) => handleKeyDown(e)}
 									>
 										<Avatar
 											src='/20die.jpg'
