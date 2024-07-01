@@ -19,7 +19,6 @@ const Spells = (props: Spells) => {
 				item
 				xs={12}
 				md={3}
-				spacing={4}
 				sx={{display: 'flex'}}
 				justifyContent={query ? 'center' : 'flex-end'}
 			>

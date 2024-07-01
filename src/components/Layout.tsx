@@ -17,7 +17,6 @@ const Layout = (props: Layout) => {
 					xs={12}
 					md={3}
 					item
-					spacing={4}
 				>
 					{columnOne}
 				</Grid>
@@ -25,7 +24,6 @@ const Layout = (props: Layout) => {
 					xs={12}
 					md={8}
 					item
-					spacing={4}
 				>
 					{columnTwo}
 				</Grid>

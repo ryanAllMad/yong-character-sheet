@@ -56,7 +56,6 @@ export default function Spellbook() {
 									item
 									xs={12}
 									md={12}
-									spacing={4} 
 									paddingBottom="2em"
 								>
 									<Heading
@@ -85,7 +84,6 @@ export default function Spellbook() {
 									item
 									xs={12}
 									md={12}
-									spacing={4} 
 									paddingBottom="2em"
 								>
 									<Heading
@@ -114,7 +112,6 @@ export default function Spellbook() {
 									item
 									xs={12}
 									md={12}
-									spacing={4} 
 									paddingBottom="2em"
 								>
 									<Heading
@@ -143,7 +140,6 @@ export default function Spellbook() {
 									item
 									xs={12}
 									md={12}
-									spacing={4}
 									paddingBottom="2em"
 								>
 									<Heading
