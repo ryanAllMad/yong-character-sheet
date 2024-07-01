@@ -20,7 +20,6 @@ const SpellDetails = (props: SpellDetails) => {
 				item
 				xs={12}
 				md={8}
-				spacing={4}
 				sx={{
 					display: '-webkit-box',
 					WebkitLineClamp: '4',
