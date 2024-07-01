@@ -18,6 +18,7 @@ const Heading = (props: Heading) => {
 	React.useEffect(() => {
 		init("cf7c5d84")
 		window.CommandBar.boot('12345')
+		window.CommandBar.trackEvent('page-view', {})
 	}, [])
 	
 	return (
