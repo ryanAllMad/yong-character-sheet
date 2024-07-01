@@ -162,7 +162,6 @@ export default function MyAppBar(props: MyAppBar) {
 		});
 	}, []);
 	React.useEffect(() => {
-		init('cf7c5d84');
 		const routerFunc = (url: string) => nav.push(url)
 		window.CommandBar.addRouter(routerFunc)
 	}, [nav]);
