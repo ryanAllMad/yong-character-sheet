@@ -36,11 +36,7 @@ const SpellDetails = (props: SpellDetails) => {
 					headingChildren={name}
 				/>
 				<Typography sx={{ fontSize: '18px' }}>
-					<span
-						dangerouslySetInnerHTML={{
-							__html: description ,
-						}}
-					/>
+					{description}
 				</Typography>
 			</Grid>
 		</>

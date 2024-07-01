@@ -16,6 +16,8 @@ import Link from 'next/link';
 const confetti = require('canvas-confetti');
 import { useTheme } from '@mui/material/styles';
 import { Cinzel_Decorative } from 'next/font/google';
+import { init } from 'commandbar';
+import { useRouter } from 'next/navigation'
 
 const titleFont = Cinzel_Decorative({
 	weight: '700',
@@ -47,6 +49,7 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 
 export default function MyAppBar(props: MyAppBar) {
 	const theme = useTheme();
+	const nav = useRouter()
 	const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion)');
 	const [animationClass, setAnimationClass] = React.useState('');
 	const [roll, setRoll] = React.useState('?');
@@ -85,6 +88,83 @@ export default function MyAppBar(props: MyAppBar) {
 			handleClick()
 		}
 	}
+	const getJokes = async () => {
+		const results = await fetch(
+			`https://official-joke-api.appspot.com/random_joke`,
+			{
+				method: 'GET',
+			}
+		).then((response) => response.json());
+		const punchline = `${results.punchline}`;
+		const setup = `${results.setup}`;
+		const triggerSetup = () => {
+			setTimeout(() => {
+				return alert(punchline);
+			}, 1500);
+			return alert(setup);
+		};
+		return triggerSetup();
+	};
+	React.useEffect(() => {
+		init('cf7c5d84');
+		window.CommandBar.boot('12345');
+		window.CommandBar.trackEvent('page-view', {});
+		window.CommandBar.addCallback('makeMeLaugh', getJokes);
+		window.CommandBar.addComponent(
+			'jokes-preview',
+			'Basic jokes Preview',
+			{
+				mount: (elem) => ({
+					render: (data, metadata) => {
+						elem.innerHTML =
+							'<div>' +
+							'<h3>' +
+							// @ts-expect-error - testing
+							data?.setup +
+							'</h3>' +
+							'<div>' +
+							// @ts-expect-error - testing
+							data?.punchline +
+							'"</div>' +
+							'</div>';
+					},
+					unmount: () => {
+						// ... clean up any timers, event handlers, etc. ...
+					},
+				}),
+			}
+		);
+		const onSearchContacts = async () => {
+			const response =  await fetch(`https://official-joke-api.appspot.com/random_joke`);
+
+			return response.json()
+		}
+		window.CommandBar.addRecords(
+			'jokes', 
+			[
+			{
+				setup: 'What do you call a crowd of chess players bragging about their wins in a hotel lobby?',
+				punchline: 'Chess nuts boasting in an open foyer.'
+			}
+		], 
+		{
+			onInputChange: onSearchContacts,
+			detail: { type: 'component', value: 'jokes-preview'}
+		});
+		window.CommandBar.addRecordAction('jokes', {
+			text: 'Make me laugh',
+			name: 'make_me_laugh',
+			template: {
+				type: 'callback',
+				value: 'makeMeLaugh',
+			},
+		});
+	}, []);
+	React.useEffect(() => {
+		init('cf7c5d84');
+		const routerFunc = (url: string) => nav.push(url)
+		window.CommandBar.addRouter(routerFunc)
+	}, [nav]);
 	React.useEffect(() => {
 		if (roll === '20' && !prefersReducedMotion) {
 			confetti.default();
