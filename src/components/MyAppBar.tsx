@@ -155,8 +155,9 @@ export default function MyAppBar(props: MyAppBar) {
 			text: 'Make me laugh',
 			name: 'make_me_laugh',
 			template: {
-				type: 'callback',
-				value: 'makeMeLaugh',
+				type: 'link',
+				value: '/spellbook',
+				operation: 'self'
 			},
 		});
 	}, []);
