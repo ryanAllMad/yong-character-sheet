@@ -15,6 +15,7 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
+    "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "next"

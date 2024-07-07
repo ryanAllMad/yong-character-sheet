@@ -88,6 +88,7 @@ export default function MyAppBar(props: MyAppBar) {
 			handleClick()
 		}
 	}
+	const initiateCommandBar = React.useCallback(() => init('cf7c5d84'), [])
 	const getJokes = async () => {
 		const results = await fetch(
 			`https://official-joke-api.appspot.com/random_joke`,
@@ -106,7 +107,7 @@ export default function MyAppBar(props: MyAppBar) {
 		return triggerSetup();
 	};
 	React.useEffect(() => {
-		init('cf7c5d84');
+		initiateCommandBar()
 		window.CommandBar.boot('12345');
 		window.CommandBar.trackEvent('page-view', {});
 		window.CommandBar.addCallback('makeMeLaugh', getJokes);
@@ -160,7 +161,7 @@ export default function MyAppBar(props: MyAppBar) {
 				operation: 'self'
 			},
 		});
-	}, []);
+	}, [initiateCommandBar]);
 	React.useEffect(() => {
 		const routerFunc = (url: string) => nav.push(url)
 		window.CommandBar.addRouter(routerFunc)
