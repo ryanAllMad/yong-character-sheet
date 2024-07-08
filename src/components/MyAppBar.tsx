@@ -17,7 +17,7 @@ const confetti = require('canvas-confetti');
 import { useTheme } from '@mui/material/styles';
 import { Cinzel_Decorative } from 'next/font/google';
 import { init } from 'commandbar';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 const titleFont = Cinzel_Decorative({
 	weight: '700',
@@ -40,7 +40,7 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 			appear={false}
 			direction='down'
 			in={!trigger}
-			easing={{enter: 'ease-in', exit: 'ease-out'}}
+			easing={{ enter: 'ease-in', exit: 'ease-out' }}
 		>
 			{children}
 		</Slide>
@@ -49,22 +49,23 @@ const ShrinkOnscroll = (props: MyAppBar) => {
 
 export default function MyAppBar(props: MyAppBar) {
 	const theme = useTheme();
-	const nav = useRouter()
+	const nav = useRouter();
 	const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion)');
 	const [animationClass, setAnimationClass] = React.useState('');
 	const [roll, setRoll] = React.useState('?');
-	const [screenInstruct, setScreenInstruct] = React.useState('enter to roll dice')
+	const [screenInstruct, setScreenInstruct] =
+		React.useState('enter to roll dice');
 	const { palette } = theme;
 	const [critical, setCritical] = React.useState<string | boolean>(false);
 	const handleClick = () => {
 		const rollResult = Math.floor(Math.random() * 20) + 1;
-		if(!prefersReducedMotion) {
+		if (!prefersReducedMotion) {
 			setAnimationClass((prev) => (!prev ? 'roll' : ''));
 		}
-		if(prefersReducedMotion) {
+		if (prefersReducedMotion) {
 			setAnimationClass((prev) => (!prev ? 'flip-once' : ''));
 		}
-		setScreenInstruct('you rolled: ')
+		setScreenInstruct('you rolled: ');
 		setRoll(`${rollResult}`);
 		if (rollResult === 20) {
 			setCritical('rgb(9, 72, 9)');
@@ -72,23 +73,23 @@ export default function MyAppBar(props: MyAppBar) {
 		if (rollResult === 1) {
 			setCritical('rgb(145, 8, 8)');
 		}
-		if(rollResult !== 1 && rollResult !== 20) {
-			setCritical(`${palette.info.light}`)
+		if (rollResult !== 1 && rollResult !== 20) {
+			setCritical(`${palette.info.light}`);
 		}
 	};
 	const reset = () => {
 		setAnimationClass('');
 		setCritical(palette.info.light);
 		setRoll('?');
-		setScreenInstruct('enter to roll dice')
+		setScreenInstruct('enter to roll dice');
 	};
 	const handleKeyDown = (e: React.KeyboardEvent) => {
-		e.preventDefault()
+		e.preventDefault();
 		if (e.code === 'Enter' || e.code === 'Space') {
-			handleClick()
+			handleClick();
 		}
-	}
-	const initiateCommandBar = React.useCallback(() => init('cf7c5d84'), [])
+	};
+	const initiateCommandBar = React.useCallback(() => init('cf7c5d84'), []);
 	const getJokes = async () => {
 		const results = await fetch(
 			`https://official-joke-api.appspot.com/random_joke`,
@@ -107,64 +108,55 @@ export default function MyAppBar(props: MyAppBar) {
 		return triggerSetup();
 	};
 	React.useEffect(() => {
-		initiateCommandBar()
+		initiateCommandBar();
 		window.CommandBar.boot('12345');
 		window.CommandBar.trackEvent('page-view', {});
 		window.CommandBar.addCallback('makeMeLaugh', getJokes);
-		window.CommandBar.addComponent(
-			'jokes-preview',
-			'Basic jokes Preview',
+		window.CommandBar.addComponent('jokes-preview', 'Basic jokes Preview', {
+			mount: (elem) => ({
+				render: (data, metadata) => {
+					elem.innerHTML =
+						'<div>' +
+						'<h3>' +
+						// @ts-expect-error - testing
+						data?.setup +
+						'</h3>' +
+						'<div>' +
+						// @ts-expect-error - testing
+						data?.punchline +
+						'"</div>' +
+						'</div>';
+				},
+				unmount: () => {
+					// ... clean up any timers, event handlers, etc. ...
+				},
+			}),
+		});
+		window.CommandBar.addRecords(
+			'jokes',
+			[
+				{
+					id: '12345',
+					setup: 'What do you call a crowd of chess players bragging about their wins in a hotel lobby?',
+					punchline: 'Chess nuts boasting in an open foyer.',
+				},
+			],
 			{
-				mount: (elem) => ({
-					render: (data, metadata) => {
-						elem.innerHTML =
-							'<div>' +
-							'<h3>' +
-							// @ts-expect-error - testing
-							data?.setup +
-							'</h3>' +
-							'<div>' +
-							// @ts-expect-error - testing
-							data?.punchline +
-							'"</div>' +
-							'</div>';
-					},
-					unmount: () => {
-						// ... clean up any timers, event handlers, etc. ...
-					},
-				}),
+				detail: { type: 'component', value: 'jokes-preview' },
 			}
 		);
-		const onSearchContacts = async () => {
-			const response =  await fetch(`https://official-joke-api.appspot.com/random_joke`);
-
-			return response.json()
-		}
-		window.CommandBar.addRecords(
-			'jokes', 
-			[
-			{
-				setup: 'What do you call a crowd of chess players bragging about their wins in a hotel lobby?',
-				punchline: 'Chess nuts boasting in an open foyer.'
-			}
-		], 
-		{
-			onInputChange: onSearchContacts,
-			detail: { type: 'component', value: 'jokes-preview'}
-		});
 		window.CommandBar.addRecordAction('jokes', {
-			text: 'Make me laugh',
-			name: 'make_me_laugh',
+			text: 'Tell Joke',
+			name: 'joke_sample',
 			template: {
-				type: 'link',
-				value: '/spellbook',
-				operation: 'self'
+				type: 'callback',
+				value: 'makeMeLaugh',
 			},
 		});
 	}, [initiateCommandBar]);
 	React.useEffect(() => {
-		const routerFunc = (url: string) => nav.push(url)
-		window.CommandBar.addRouter(routerFunc)
+		const routerFunc = (url: string) => nav.push(url);
+		window.CommandBar.addRouter(routerFunc);
 	}, [nav]);
 	React.useEffect(() => {
 		if (roll === '20' && !prefersReducedMotion) {
@@ -195,10 +187,17 @@ export default function MyAppBar(props: MyAppBar) {
 							spacing={2}
 						>
 							<div className='dice-cup'>
-								<div className='dice-inner' style={{transition: prefersReducedMotion ? 'none' : 'transform 0.6s'}}>
+								<div
+									className='dice-inner'
+									style={{
+										transition: prefersReducedMotion
+											? 'none'
+											: 'transform 0.6s',
+									}}
+								>
 									<div
-										tabIndex={0} 
-										role="button"
+										tabIndex={0}
+										role='button'
 										className={`dice ${animationClass}`}
 										onClick={handleClick}
 										onKeyDown={(e) => handleKeyDown(e)}
@@ -219,12 +218,18 @@ export default function MyAppBar(props: MyAppBar) {
 										onClick={reset}
 									>
 										<Avatar
-										// @ts-ignore
+											// @ts-ignore
 											sx={{
 												width: 55,
 												height: 55,
-												bgcolor: !critical ? `${palette.info.light}` : critical,
-												color: roll === '20' || roll === '1' ? '#fff !important' : `${palette.info.dark}!important`
+												bgcolor: !critical
+													? `${palette.info.light}`
+													: critical,
+												color:
+													roll === '20' ||
+													roll === '1'
+														? '#fff !important'
+														: `${palette.info.dark}!important`,
 											}}
 										>
 											<Typography variant='h2'>
